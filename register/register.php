@@ -25,7 +25,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     elseif (strlen($password) < 8) {
         $message = "Password must be at least 8 characters long.";
     }
-    
+
     else {
         $check = $pdo->prepare("SELECT id FROM users WHERE email = ?");
         $check->execute([$email]);
@@ -51,7 +51,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["auth_method"] = "register";
 
             header("Location: /website/dashboard/dashboard.php");
-
             // header("Location: ../login/login_form.php"); if need to redirect to login page after registration
             exit();
         }
