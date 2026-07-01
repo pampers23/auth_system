@@ -12,7 +12,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (empty($username) || empty($email) || empty($password)) {
         $message = "All fields are required.";
-    } else {
+    } 
+
+    elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $message = "Invalid email format.";
+    }
+
+    elseif (strlen($username) < 3) {
+        $message = "Username must be at least 3 characters long.";
+    }
+
+    elseif (strlen($password) < 8) {
+        $message = "Password must be at least 8 characters long.";
+    }
+    
+    else {
         $check = $pdo->prepare("SELECT id FROM users WHERE email = ?");
         $check->execute([$email]);
 
