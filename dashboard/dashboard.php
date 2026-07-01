@@ -20,16 +20,16 @@ $authMethod = $_SESSION["auth_method"] ?? "login";
 </head>
 <body>
    <div class="card">
-        <h2>Welcome, <?php echo htmlspecialchars($username); ?>!</h2>
+     <h2>Welcome, <?php echo htmlspecialchars($username); ?>!</h2>
 
-        <?php if ($authMethod == "register"): ?>
-            <p>Thank you for registering! Welcome to our platform.</p>
-        <?php else: ?>
-            <p>You are logged in.</p>
-        <?php endif; ?>
-        
-        
-        <a href="../logout/logout.php">Logout</a>
+    <?php if ($authMethod == "register"): ?>
+        <p>Thank you for registering! Welcome to our platform.</p>
+    <?php else: ?>
+        <p>You are logged in.</p>
+    <?php endif; ?>
+    
+    
+    <a href="../logout/logout.php">Logout</a>
    </div>
 </body>
 </html>

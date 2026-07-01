@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require "../config/database.php";
 
@@ -31,7 +32,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 $hashedPassword
             ]);
 
-            header("Location: /website/login/login_form.php");
+            $_SESSION["user_id"] = $pdo->lastInsertId();
+            $_SESSION["username"] = $username;
+            $_SESSION["auth_method"] = "register";
+
+            header("Location: /website/dashboard/dashboard.php");
+
+            // header("Location: ../login/login_form.php"); if need to redirect to login page after registration
             exit();
         }
     }
